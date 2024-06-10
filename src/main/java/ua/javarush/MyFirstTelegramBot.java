@@ -1,27 +1,29 @@
 package ua.javarush;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
-import java.util.Map;
-
-import static ua.javarush.TelegramBotContent.*;
-import static ua.javarush.TelegramBotUtils.*;
+import static ua.javarush.TelegramBotUtils.createMessage;
+import static ua.javarush.TelegramBotUtils.getChatId;
 
 public class MyFirstTelegramBot extends TelegramLongPollingBot {
+    Dotenv dotenv = Dotenv.load();
+
     @Override
     public String getBotUsername() {
-        return "dev76557_bot";
+        String userName = dotenv.get("USERNAME");
+        return userName;
     }
 
     @Override
     public String getBotToken() {
-        return "7348260732:AAGJ7URNeA_pJxW817xOH8FWt11iQFDYkJ4";
+        String token = dotenv.get("TOKEN");
+        return token;
     }
 
     @Override

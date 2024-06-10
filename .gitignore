@@ -1,3 +1,6 @@
+#Secret data
+.env
+
 # Compiled class file
 *.class
 
